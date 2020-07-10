@@ -33,3 +33,8 @@ resource "kubernetes_service" "lb" {
     }
   }
 }
+
+data "aws_lb" "ingress-nginx" {
+  name = "${element(split("-", element(split(".", kubernetes_service.lb.load_balancer_ingress.0.hostname), 0)), 0)}"
+  depends_on = [kubernetes_service.lb]
+}

@@ -40,3 +40,7 @@ variable "controller_replicas" {
   type        = number
   default     = 1
 }
+
+variable "module_depends_on" {
+  default = [""]
+}
